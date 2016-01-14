@@ -17,7 +17,7 @@
 <body>
 <div class="container">
 </div>
-<div class="form-group">
+<div class="form-group" style="width: 200px; margin-left: 10px; margin-top: 10px;">
     <label for="sel1">Clientes:</label>
     <select class="form-control" id="sel1">
         <?php
