@@ -1,3 +1,4 @@
+<?php require_once "classes/Cliente.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,15 @@
 </head>
 <body>
 <div class="container">
-        <h2>Entrei no projeto</h2>
+</div>
+<div class="form-group">
+    <label for="sel1">Clientes:</label>
+    <select class="form-control" id="sel1">
+        <?php
+        foreach ($cliente as $clientes) : ?>
+        <option><?php echo $clientes->nome;?></option>
+        <?php endforeach; ?>
+</select>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
