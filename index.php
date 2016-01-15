@@ -70,9 +70,10 @@ else
 
         <input type="radio" name="ordenar" value="0">Ascendente<br>
         <input type="radio" name="ordenar" value="1" style="margin-bottom: 10px;">Descendente<br>
-        <button class="btn btn-info col-md-5 col-md-offset-1" style="width:225px; margin-left: 135px; margin-bottom: 20px"type="submit">Enviar</button>
+        <button class="btn btn-info col-md-5 col-md-offset-1" style="width:225px; margin-left: 135px; margin-bottom: 20px"type="submit">Consultar</button>
     </form>
-    <?php if(empty($filtro)):?>
+
+    <?php if(!empty($filtro)):?>
     <table style="width: 125%">
         <thead>
         <tr>
@@ -84,6 +85,7 @@ else
             <th>Endereço</th>
         </tr>
         </thead>
+    <?php endif;?>
         <tbody>
         <?php $row_count = 1;?>
         <?php
@@ -98,7 +100,7 @@ else
                 <td><?php echo $clientes->endereco; ?></td>
             </tr>
         <?php endforeach; ?>
-        <?php endif;?>
+
         </tbody>
     </table>
 </div>
