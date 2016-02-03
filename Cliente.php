@@ -1,29 +1,41 @@
 <?php
-require_once __DIR__ . "../interfaces/EnderecoCobranca.php";
-require_once __DIR__ . "../interfaces/GrauImportancia.php";
+require_once __DIR__ . "/interfaces/EnderecoCobranca.php";
+require_once __DIR__ . "/interfaces/GrauImportancia.php";
 
-class Cliente implements EnderecoCobranca,GrauImportancia {
+abstract class Cliente implements EnderecoCobranca,GrauImportancia {
+    public $id;
     public $nome;
-    public $cpf;
     public $idade;
     public $sexo;
     public $endereco;
-    public $pessoa;
     public $estrela;
     public $EnderecoCobranca;
     public $GrauImportancia;
 
-    public function __construct($nome = null,$cpf = null ,$idade = null,$estrela = null,$sexo = null,$endereco = null,$pessoa = null, $EnderecoCobranca = null, $GrauImportancia = null){
+    public function __construct($id = null,$nome = null,$cpf = null ,$idade = null,$estrela = null,$sexo = null,$endereco = null,$pessoa = null, $EnderecoCobranca = null, $GrauImportancia = null){
+        $this->id = $id;
         $this->nome = $nome;
-        $this->cpf = $cpf;
         $this->idade = $idade;
         $this->estrela = $estrela;
         $this->sexo = $sexo;
         $this->endereco = $endereco;
-        $this->pessoa = $pessoa;
         $this->pessoa = $EnderecoCobranca;
         $this->pessoa = $GrauImportancia;
 
+    }
+
+    /**
+     * @return null
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function getEstrela()

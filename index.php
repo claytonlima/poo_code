@@ -1,9 +1,12 @@
-<?php require_once "classes/Cliente.php";
+<?php require_once "Cliente.php";
+require_once "PessoaJuridica.php";
+require_once "PessoaFisica.php";
 
 function filtrar($var)
 {
-    if($var->cpf==@$_GET['clienteCpf'] && @$_GET['estrela'] == '')
+    if($var->id==@$_GET['IdCliente'] && @$_GET['estrela'] == '')
     {
+
         return true;
     }
     elseif($var->estrela==@$_GET['estrela'])
@@ -15,29 +18,60 @@ function filtrar($var)
     }
 }
 
-$cliente = array(
-    0 => new Cliente('Clayton Lima','111111111111','30','1','M','Rua perdida SP','PJ'),
-    1 => new Cliente('Carol Lima','22222222222','45','5','F','Rua achei SP','PF'),
-    2 => new Cliente('Geo Lima','33333333','55','3','F','Rua perdida SP','PJ'),
-    3 => new Cliente('Bruno Lima','44444444','18','4','M','Rua perdida SP','PF'),
-    4 => new Cliente('Lucas Lima','5555555555','14','2','M','Rua perdida SP','PF'),
-    5 => new Cliente('Luan Lima','6666666','30','1','M','Rua perdida SP','PJ'),
-    6 => new Cliente('Fernando Lima','9999999','25','3','M','Rua perdida SP','PF'),
-    7 => new Cliente('Rodrigo Lima','4101010101','20','4','M','Rua perdida SP','PJ'),
-    8 => new Cliente('Paula Lima','121212121212','28','5','M','Rua perdida SP','PJ'),
-    9 => new Cliente('Eduardo Lima','131313131331','55','5','M','Rua perdida SP','PF')
-);
+$cliente1 = new PessoaJuridica(1,'Clayton Beraldi','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
+$cliente2 = new PessoaFisica(2,'Fernando de Paula','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
+$cliente3 = new PessoaFisica(3,'Marcos Menezes','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
+$cliente4 = new PessoaJuridica(4,'Rodrigo Paiva','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
+$cliente5 = new PessoaJuridica(5,'Marcos Sobrinho','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
+$cliente6 = new PessoaJuridica(6,'Isis Teixeira','111111111111','30','1','F','Rua perdida SP','PJ',rand(0,5),33333333333);
+$cliente7 = new PessoaFisica(7,'Elba Araújo','111111111111','30','1','F','Rua perdida SP','PJ',rand(0,5),33333333333);
+$cliente8 = new PessoaFisica(8,'Eduardo Almeida','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
+$cliente9 = new PessoaFisica(9,'Priscila Cavalcante','111111111111','30','1','F','Rua perdida SP','PJ',rand(0,5),33333333333);
+$cliente10 = new PessoaFisica(10,'Ivete Sangalo','111111111111','30','1','F','Rua perdida SP','PJ',rand(0,5),33333333333);
+;
+$clientes = [$cliente1,
+             $cliente2,
+             $cliente3,
+             $cliente4,
+             $cliente5,
+             $cliente6,
+             $cliente7,
+             $cliente8,
+             $cliente9,
+             $cliente10
+];
+
+
+
+
+
+
+echo "<pre>";
+var_dump($clientes);
+
+//$cliente = array(
+//    0 => new Cliente(1,'Clayton Lima','111111111111','30','1','M','Rua perdida SP','PJ'),
+//    1 => new Cliente('Carol Lima','22222222222','45','5','F','Rua achei SP','PF'),
+//    2 => new Cliente('Geo Lima','33333333','55','3','F','Rua perdida SP','PJ'),
+//    3 => new Cliente('Bruno Lima','44444444','18','4','M','Rua perdida SP','PF'),
+//    4 => new Cliente('Lucas Lima','5555555555','14','2','M','Rua perdida SP','PF'),
+//    5 => new Cliente('Luan Lima','6666666','30','1','M','Rua perdida SP','PJ'),
+//    6 => new Cliente('Fernando Lima','9999999','25','3','M','Rua perdida SP','PF'),
+//    7 => new Cliente('Rodrigo Lima','4101010101','20','4','M','Rua perdida SP','PJ'),
+//    8 => new Cliente('Paula Lima','121212121212','28','5','M','Rua perdida SP','PJ'),
+//    9 => new Cliente('Eduardo Lima','131313131331','55','5','M','Rua perdida SP','PF')
+//);
 
 if(@$_GET['ordenar']== 1){
-    rsort($cliente);
+    rsort($clientes);
 }else{
-    sort($cliente);
+    sort($clientes);
 }
 
-if(@$_GET['clienteCpf'] != 'todos' && @$_GET['estrela'] == ''){
+if(@$_GET['IdCliente'] != 'todos' && @$_GET['estrela'] == ''){
     $filtro = array_filter($cliente,'filtrar');
 }
-elseif(@$_GET['clienteCpf'] == '' && @$_GET['estrela'] != '')
+elseif(@$_GET['IdCliente'] == '' && @$_GET['estrela'] != '')
 {
     $filtro = array_filter($cliente,'filtrar');
 }
@@ -67,12 +101,12 @@ else{
 <div class="form-group" style="width: 500px; margin:0 auto; margin-top: 10px;">
     <form action="index.php" method="GET">
         <label for="sel1">Clientes:</label>
-        <select class="form-control" id="sel1" name="clienteCpf" style="margin-bottom: 10px;">
+        <select class="form-control" id="sel1" name="IdCliente" style="margin-bottom: 10px;">
             <option value="">Escolher uma opção</option>
             <option value="todos">Todos</option>
             <?php
-            foreach ($cliente as $clientes) : ?>
-                <option value="<?php echo $clientes->cpf;?>"><?php echo $clientes->nome;?></option>
+            foreach ($clientes as $clientes) : ?>
+                <option value="<?php echo $clientes->id;?>"><?php echo $clientes->nome;?></option>
             <?php endforeach; ?>
         </select>
 
