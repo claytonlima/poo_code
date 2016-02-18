@@ -1,8 +1,7 @@
 <?php
-require_once __DIR__ . "/interfaces/EnderecoCobranca.php";
-require_once __DIR__ . "/interfaces/GrauImportancia.php";
 
-abstract class Cliente implements EnderecoCobranca,GrauImportancia {
+
+class Cliente {
     public $id;
     public $nome;
     public $idade;

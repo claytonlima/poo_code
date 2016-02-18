@@ -1,6 +1,4 @@
-<?php require_once "Cliente.php";
-require_once "PessoaJuridica.php";
-require_once "PessoaFisica.php";
+<?php require_once "classes/Cliente.php";
 
 function filtrar($var)
 {
