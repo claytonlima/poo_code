@@ -31,7 +31,6 @@ $cliente = array(
     9 => new Cliente('Eduardo Lima','131313131331','55','M','Rua perdida SP')
 );
 
-
 if(@$_GET['ordenar']== 1){
     rsort($clientes);
 }else{
