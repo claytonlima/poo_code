@@ -1,22 +1,15 @@
 <?php require_once "classes/Cliente.php";
-
 function filtrar($var)
 {
-    if($var->id==@$_GET['IdCliente'] && @$_GET['estrela'] == '')
-    {
-
-        return true;
-    }
-    elseif($var->estrela==@$_GET['estrela'])
+    if($var->cpf==@$_GET['clienteCpf'])
     {
         return true;
     }
-    else{
+    else
+    {
         return false;
     }
 }
-
-
 $cliente = array(
     0 => new Cliente('Clayton Lima','111111111111','30','M','Rua perdida SP'),
     1 => new Cliente('Carol Lima','22222222222','45','F','Rua achei SP'),
@@ -29,24 +22,19 @@ $cliente = array(
     8 => new Cliente('Paula Lima','121212121212','28','M','Rua perdida SP'),
     9 => new Cliente('Eduardo Lima','131313131331','55','M','Rua perdida SP')
 );
-
 if(@$_GET['ordenar']== 1){
-    rsort($clientes);
+    rsort($cliente);
 }else{
-    sort($clientes);
+    sort($cliente);
 }
-
-if(@$_GET['IdCliente'] != 'todos' && @$_GET['estrela'] == ''){
-    $filtro = array_filter($cliente,'filtrar');
-}
-elseif(@$_GET['IdCliente'] == '' && @$_GET['estrela'] != '')
+if(@$_GET['clienteCpf'] != 'todos')
 {
     $filtro = array_filter($cliente,'filtrar');
 }
-else{
+else
+{
     $filtro = $cliente;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,32 +57,17 @@ else{
 <div class="form-group" style="width: 500px; margin:0 auto; margin-top: 10px;">
     <form action="index.php" method="GET">
         <label for="sel1">Clientes:</label>
-        <select class="form-control" id="sel1" name="IdCliente" style="margin-bottom: 10px;">
-            <option value="">Escolher uma opção</option>
+        <select class="form-control" id="sel1" name="clienteCpf" style="margin-bottom: 10px;">
             <option value="todos">Todos</option>
             <?php
-            foreach ($clientes as $clientes) : ?>
-                <option value="<?php echo $clientes->id;?>"><?php echo $clientes->nome;?></option>
+            foreach ($cliente as $clientes) : ?>
+                <option value="<?php echo $clientes->cpf;?>"><?php echo $clientes->nome;?></option>
             <?php endforeach; ?>
         </select>
 
-        <label for="sel1">Estrelas:</label>
-        <select class="form-control" id="sel1" name="estrela" style="margin-bottom: 10px;">
-            <option value="">Escolha uma opção</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-
-        </select>
-     <div>
-         <fieldset>
-            <input type="radio" name="ordenar" value="0">Ascendente<br>
-            <input type="radio" name="ordenar" value="1" style="margin-bottom: 10px;">Descendente<br>
-         </fieldset>
-     </div>
-         <button class="btn btn-info col-md-5 col-md-offset-1" style="width:225px; margin-left: 135px; margin-bottom: 20px"type="submit">Consultar</button>
+        <input type="radio" name="ordenar" value="0">Ascendente<br>
+        <input type="radio" name="ordenar" value="1" style="margin-bottom: 10px;">Descendente<br>
+        <button class="btn btn-info col-md-5 col-md-offset-1" style="width:225px; margin-left: 135px; margin-bottom: 20px"type="submit">Consultar</button>
     </form>
 
     <?php if(!empty($filtro)):?>
@@ -104,14 +77,12 @@ else{
             <th>#</th>
             <th>Nome</th>
             <th>CPF</th>
-            <th>Pessoa</th>
-            <th>Estrelas</th>
             <th>Idade</th>
             <th>Sexo</th>
             <th>Endereço</th>
         </tr>
         </thead>
-    <?php endif;?>
+        <?php endif;?>
         <tbody>
         <?php $row_count = 1;?>
         <?php
@@ -121,8 +92,6 @@ else{
                 <td><?php echo $row_count++; ?></td>
                 <td><?php echo $clientes->nome ; ?></td>
                 <td><?php echo $clientes->cpf; ?></td>
-                <td><?php echo $clientes->pessoa; ?></td>
-                <td><?php echo $clientes->estrela; ?></td>
                 <td><?php echo $clientes->idade; ?></td>
                 <td><?php echo $clientes->sexo; ?></td>
                 <td><?php echo $clientes->endereco; ?></td>
