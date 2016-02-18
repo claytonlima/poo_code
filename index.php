@@ -18,8 +18,6 @@ function filtrar($var)
     }
 }
 
-<<<<<<< HEAD
-
 $cliente = array(
     0 => new Cliente('Clayton Lima','111111111111','30','M','Rua perdida SP'),
     1 => new Cliente('Carol Lima','22222222222','45','F','Rua achei SP'),
@@ -32,51 +30,7 @@ $cliente = array(
     8 => new Cliente('Paula Lima','121212121212','28','M','Rua perdida SP'),
     9 => new Cliente('Eduardo Lima','131313131331','55','M','Rua perdida SP')
 );
-=======
-$cliente1 = new PessoaJuridica(1,'Clayton Beraldi','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
-$cliente2 = new PessoaFisica(2,'Fernando de Paula','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
-$cliente3 = new PessoaFisica(3,'Marcos Menezes','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
-$cliente4 = new PessoaJuridica(4,'Rodrigo Paiva','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
-$cliente5 = new PessoaJuridica(5,'Marcos Sobrinho','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
-$cliente6 = new PessoaJuridica(6,'Isis Teixeira','111111111111','30','1','F','Rua perdida SP','PJ',rand(0,5),33333333333);
-$cliente7 = new PessoaFisica(7,'Elba Araújo','111111111111','30','1','F','Rua perdida SP','PJ',rand(0,5),33333333333);
-$cliente8 = new PessoaFisica(8,'Eduardo Almeida','111111111111','30','1','M','Rua perdida SP','PJ',rand(0,5),33333333333);
-$cliente9 = new PessoaFisica(9,'Priscila Cavalcante','111111111111','30','1','F','Rua perdida SP','PJ',rand(0,5),33333333333);
-$cliente10 = new PessoaFisica(10,'Ivete Sangalo','111111111111','30','1','F','Rua perdida SP','PJ',rand(0,5),33333333333);
-;
-$clientes = [$cliente1,
-             $cliente2,
-             $cliente3,
-             $cliente4,
-             $cliente5,
-             $cliente6,
-             $cliente7,
-             $cliente8,
-             $cliente9,
-             $cliente10
-];
 
-
-
-
-
-
-echo "<pre>";
-var_dump($clientes);
-
-//$cliente = array(
-//    0 => new Cliente(1,'Clayton Lima','111111111111','30','1','M','Rua perdida SP','PJ'),
-//    1 => new Cliente('Carol Lima','22222222222','45','5','F','Rua achei SP','PF'),
-//    2 => new Cliente('Geo Lima','33333333','55','3','F','Rua perdida SP','PJ'),
-//    3 => new Cliente('Bruno Lima','44444444','18','4','M','Rua perdida SP','PF'),
-//    4 => new Cliente('Lucas Lima','5555555555','14','2','M','Rua perdida SP','PF'),
-//    5 => new Cliente('Luan Lima','6666666','30','1','M','Rua perdida SP','PJ'),
-//    6 => new Cliente('Fernando Lima','9999999','25','3','M','Rua perdida SP','PF'),
-//    7 => new Cliente('Rodrigo Lima','4101010101','20','4','M','Rua perdida SP','PJ'),
-//    8 => new Cliente('Paula Lima','121212121212','28','5','M','Rua perdida SP','PJ'),
-//    9 => new Cliente('Eduardo Lima','131313131331','55','5','M','Rua perdida SP','PF')
-//);
->>>>>>> 40e42dbeb5e8f8aa68561079fd6595bafe82466e
 
 if(@$_GET['ordenar']== 1){
     rsort($clientes);
