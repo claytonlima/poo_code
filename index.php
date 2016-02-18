@@ -16,6 +16,7 @@ function filtrar($var)
     }
 }
 
+
 $cliente = array(
     0 => new Cliente('Clayton Lima','111111111111','30','M','Rua perdida SP'),
     1 => new Cliente('Carol Lima','22222222222','45','F','Rua achei SP'),
